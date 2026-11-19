@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#635bff"><title>Campus Mate AI</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="top"><div><div class="brand">🎓 Campus Mate AI</div><div class="tag">Your smart student companion</div></div><div class="pill" style="background:#ffffff25;color:white">STUDENT SPACE</div></div><div class="hero"><h1 id="greeting">Hello, Student! 👋</h1><p>Plan better. Study smarter. Make campus life easier.</p></div></header>
+<main>
+<nav class="tabs">
+<button class="tab active" data-tab="home">🏠 Dashboard</button><button class="tab" data-tab="attendance">📊 Attendance</button><button class="tab" data-tab="tasks">✅ Tasks</button><button class="tab" data-tab="timetable">🗓️ Timetable</button><button class="tab" data-tab="notes">📚 Notes</button><button class="tab" data-tab="assistant">✨ Study Buddy</button>
+</nav>
+<section id="home" class="page">
+<div class="grid">
+<div class="card span-3"><div class="kicker">Attendance average</div><div class="metric" id="avg">0%</div><div class="sub">Across saved subjects</div><div class="progress"><i id="avgbar" style="width:0%"></i></div></div>
+<div class="card span-3"><div class="kicker">Pending tasks</div><div class="metric" id="pending">0</div><div class="sub">Assignments & reminders</div></div>
+<div class="card span-3"><div class="kicker">Saved notes</div><div class="metric" id="notecount">0</div><div class="sub">Your study library</div></div>
+<div class="card span-3"><div class="kicker">Today's focus</div><div class="metric">One step</div><div class="sub">Small progress counts ✨</div></div>
+<div class="card span-7"><h2>📌 Upcoming tasks</h2><div id="homeTasks"></div></div>
+<div class="card span-5"><h2>📣 Campus board</h2><div class="notice">Welcome to Campus Mate AI! Add your class updates and reminders here.</div><div class="notice">Tip: Keep your attendance above your college's required minimum.</div><p class="sub">This board is currently personal to this device.</p></div>
+<div class="card span-12"><h2>⚡ Quick actions</h2><div class="formrow"><button onclick="showTab('tasks')">Add a task</button><button class="secondary" onclick="showTab('attendance')">Update attendance</button><button class="secondary" onclick="showTab('assistant')">Ask Study Buddy</button></div></div>
+</div></section>
+<section id="attendance" class="page hidden"><div class="grid"><div class="card span-5"><h2>📊 Add subject</h2><div class="formrow"><input id="subject" placeholder="Subject name"></div><div class="formrow"><input id="attended" type="number" min="0" placeholder="Classes attended"><input id="total" type="number" min="0" placeholder="Total classes"></div><button onclick="addAttendance()">Save subject</button><p class="sub">Enter attended and total classes (e.g. 18 and 22).</p></div><div class="card span-7"><h2>Your attendance</h2><div id="attendanceList"></div></div></div></section>
+<section id="tasks" class="page hidden"><div class="grid"><div class="card span-5"><h2>✅ Add a task</h2><input id="taskTitle" placeholder="Assignment, exam or reminder"><div class="formrow"><input id="taskDate" type="date"><select id="taskType"><option>Assignment</option><option>Exam</option><option>Personal</option></select></div><button onclick="addTask()">Add task</button></div><div class="card span-7"><h2>My tasks</h2><div id="taskList"></div></div></div></section>
+<section id="timetable" class="page hidden"><div class="grid"><div class="card span-5"><h2>🗓️ Add a class</h2><input id="className" placeholder="Subject / class"><div class="formrow"><select id="day"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select><input id="classTime" type="time"></div><input id="room" placeholder="Room / location (optional)" style="margin-bottom:10px"><button onclick="addClass()">Add to timetable</button></div><div class="card span-7"><h2>My timetable</h2><div id="classList"></div></div></div></section>
+<section id="notes" class="page hidden"><div class="grid"><div class="card span-5"><h2>📚 Save a note</h2><input id="noteTitle" placeholder="Note title"><textarea id="noteBody" placeholder="Write your notes here..."></textarea><button onclick="addNote()" style="margin-top:8px">Save note</button></div><div class="card span-7"><h2>Study library</h2><div id="noteList"></div></div></div></section>
+<section id="assistant" class="page hidden"><div class="grid"><div class="card span-8"><h2>✨ Study Buddy</h2><p class="sub">A simple built-in study helper. No OpenAI API key needed.</p><div class="chat" id="chat"><div class="bubble bot">Hi! I'm your Campus Mate study buddy. Ask me for a study plan, revision tips, or help organizing your day.</div></div><div class="formrow"><input id="question" placeholder="Ask something about studying..." onkeydown="if(event.key==='Enter')askBuddy()"><button onclick="askBuddy()">Send</button></div></div><div class="card span-4"><h2>Try asking</h2><button class="secondary" style="width:100%;margin:4px 0" onclick="quickAsk('Make me a study plan')">Make a study plan</button><button class="secondary" style="width:100%;margin:4px 0" onclick="quickAsk('How can I revise effectively?')">Revision tips</button><button class="secondary" style="width:100%;margin:4px 0" onclick="quickAsk('How do I avoid procrastination?')">Beat procrastination</button><p class="sub">Note: This is a rule-based demo assistant, not a live AI model. It works offline.</p></div></div></section>
+</main><footer>Campus Mate AI · Prototype 1.0 · Your data stays in this browser on this device.</footer>
+<script src="script.js"></script></body></html>
